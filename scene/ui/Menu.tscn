@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://asset/sprite/Run.png" type="Texture" id=1]
+[ext_resource path="res://asset/sprite/Jungle.png" type="Texture" id=2]
+[ext_resource path="res://scene/ui/Menu.gd" type="Script" id=3]
+[ext_resource path="res://asset/font/RubikMoonrocks-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 62
+font_data = ExtResource( 4 )
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Start" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Start"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -384.0
+margin_top = -210.0
+margin_right = 384.0
+margin_bottom = 50.0
+alignment = 1
+
+[node name="Jungle" type="TextureRect" parent="Start/VBoxContainer"]
+margin_right = 768.0
+margin_bottom = 128.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="Run" type="TextureRect" parent="Start/VBoxContainer"]
+margin_top = 132.0
+margin_right = 768.0
+margin_bottom = 260.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.105882, 0.113725, 0.106924, 0.392157 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.5
+margin_top = -150.0
+margin_right = 175.5
+margin_bottom = 79.0
+custom_constants/separation = 30
+
+[node name="Message" type="Label" parent="GameOver/VBoxContainer"]
+margin_right = 351.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+align = 1
+
+[node name="Restart" type="Button" parent="GameOver/VBoxContainer"]
+margin_top = 104.0
+margin_right = 351.0
+margin_bottom = 184.0
+custom_fonts/font = SubResource( 1 )
+text = "RESTART"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="GameOver/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]

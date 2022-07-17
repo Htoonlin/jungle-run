@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scene/environment/Ground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/World.gd" type="Script" id=2]
+[ext_resource path="res://scene/character/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/ui/Menu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/environment/RockSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/environment/FruitSpawner.tscn" type="PackedScene" id=6]
+
+[node name="World" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.792157, 1, 1 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 300, 526 )
+collision_mask = 0
+
+[node name="Ground" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 592 )
+
+[node name="RockSpawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1340, 540 )
+
+[node name="Menu" parent="." instance=ExtResource( 4 )]
+
+[node name="FruitSpawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1340, 300 )
+
+[connection signal="game_over" from="Player" to="." method="_on_Player_game_over"]
+[connection signal="start" from="Menu" to="." method="_on_Menu_start"]
