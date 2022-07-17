@@ -6,7 +6,7 @@ onready var timer = $Timer
 
 func spawn_fruit():
 	var fruit = Fruit.instance()
-	fruit.position.x = randi() % 300	
+	fruit.position.x = randi() % 200	
 	add_child(fruit)
 
 func start():

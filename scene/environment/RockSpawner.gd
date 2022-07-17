@@ -8,7 +8,7 @@ onready var timer = $Timer
 
 func spawn_rock():
 	var rock = Rock.instance()
-	rock.position.x = randi() % 300	
+	rock.position.x = randi() % 400	
 	add_child(rock)
 	emit_signal("spawn_rock", rock)
 

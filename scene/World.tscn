@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scene/environment/Ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/World.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://scene/ui/Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scene/environment/RockSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scene/environment/FruitSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scene/environment/Cloud.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scene/ui/HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://asset/audio/background.mp3" type="AudioStream" id=9]
 
 [node name="World" type="Node"]
 script = ExtResource( 2 )
@@ -30,5 +33,20 @@ position = Vector2( 1340, 540 )
 [node name="FruitSpawner" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1340, 300 )
 
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Cloud1" parent="." instance=ExtResource( 7 )]
+position = Vector2( 410, 120 )
+
+[node name="Cloud2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1088, 180 )
+
+[node name="HUD" parent="." instance=ExtResource( 8 )]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
 [connection signal="game_over" from="Player" to="." method="_on_Player_game_over"]
+[connection signal="hit_apple" from="Player" to="." method="_on_Player_hit_apple"]
 [connection signal="start" from="Menu" to="." method="_on_Menu_start"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

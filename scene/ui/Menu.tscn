@@ -50,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.105882, 0.113725, 0.106924, 0.392157 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+[node name="Message" type="Label" parent="GameOver"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -58,23 +58,22 @@ anchor_bottom = 0.5
 margin_left = -175.5
 margin_top = -150.0
 margin_right = 175.5
-margin_bottom = 79.0
-custom_constants/separation = 30
-
-[node name="Message" type="Label" parent="GameOver/VBoxContainer"]
-margin_right = 351.0
-margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
 text = "Game Over"
 align = 1
+valign = 1
 
-[node name="Restart" type="Button" parent="GameOver/VBoxContainer"]
-margin_top = 104.0
-margin_right = 351.0
-margin_bottom = 184.0
+[node name="Restart" type="Button" parent="GameOver"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.5
+margin_right = 175.5
+margin_bottom = 150.0
 custom_fonts/font = SubResource( 1 )
 text = "RESTART"
 
 [node name="Tween" type="Tween" parent="."]
 
-[connection signal="pressed" from="GameOver/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="GameOver/Restart" to="." method="_on_Restart_pressed"]

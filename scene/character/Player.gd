@@ -7,11 +7,13 @@ enum Style {IDLE, RUN, JUMP, CRAWL, SHOOT, DIE}
 enum HitType {ROCK,APPLE}
 
 signal game_over
+signal hit_apple
 
 onready var animator = $AnimationPlayer
 onready var sprite = $Sprite
+onready var jump_sound = $JumpSound
 
-export var jump_speed = -1100
+export var jump_speed = -1200
 export var gravity = 3000
 
 var die = false
@@ -32,6 +34,7 @@ func run():
 func jump():
 	if current_style == Style.JUMP: return
 	print("Jump")
+	jump_sound.play()
 	current_style = Style.JUMP
 	animator.play("Jump")
 	velocity.y = jump_speed
@@ -54,6 +57,8 @@ func game_over():
 func hit(type):
 	if type == HitType.ROCK:
 		game_over()
+	elif type == HitType.APPLE:
+		emit_signal("hit_apple")
 	
 func _ready():
 	idle()

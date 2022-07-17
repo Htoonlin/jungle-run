@@ -1,6 +1,7 @@
 extends Area2D
 
 onready var sprite = $Sprite
+onready var hit_sound = $HitSound
 
 var speed = 490
 
@@ -15,5 +16,6 @@ func _physics_process(delta):
 
 func _on_Rock_body_entered(body):
 	if body is Player and body.has_method("hit"):
+		hit_sound.play()
 		body.hit(Player.HitType.ROCK)
 		
