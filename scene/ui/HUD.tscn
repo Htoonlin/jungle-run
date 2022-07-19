@@ -1,8 +1,40 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://asset/sprite/apple.png" type="Texture" id=1]
 [ext_resource path="res://asset/font/RubikMoonrocks-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scene/ui/HUD.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "grow"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -11,21 +43,23 @@ font_data = ExtResource( 2 )
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 15.0
-margin_top = 3.0
-margin_right = 143.0
-margin_bottom = 131.0
-rect_scale = Vector2( 0.5, 0.5 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 43, 43 )
 texture = ExtResource( 1 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "grow"
+anims/RESET = SubResource( 3 )
+anims/grow = SubResource( 2 )
 
 [node name="Fruit" type="Label" parent="."]
-margin_left = 93.0
+margin_left = 80.0
 margin_top = 16.0
 margin_right = 263.0
 margin_bottom = 72.0
 custom_fonts/font = SubResource( 1 )
-text = "x 0000"
+text = "x 00"
 valign = 1
 
 [node name="Timer" type="Label" parent="."]

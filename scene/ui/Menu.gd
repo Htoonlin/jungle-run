@@ -22,5 +22,6 @@ func game_over():
 	start_menu.hide()
 	game_over_menu.show()
 
-func _on_Restart_pressed():
+
+func _on_Restart_button_up():
 	get_tree().reload_current_scene()

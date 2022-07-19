@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://asset/sprite/ground_enemies.png" type="Texture" id=1]
+[ext_resource path="res://scene/environment/GroundEnemy.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40.5, 35 )
+
+[node name="GroundEnemy" type="Area2D" groups=["enemies"]]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 6
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3, 20 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Rock_body_entered"]

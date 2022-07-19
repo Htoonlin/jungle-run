@@ -4,7 +4,7 @@ class_name Player
 
 const MOBILES = ["android", "ios"]
 enum Style {IDLE, RUN, JUMP, CRAWL, SHOOT, DIE}
-enum HitType {ROCK,APPLE}
+enum HitType {ENEMY,APPLE}
 
 signal game_over
 signal hit_apple
@@ -12,8 +12,9 @@ signal hit_apple
 onready var animator = $AnimationPlayer
 onready var sprite = $Sprite
 onready var jump_sound = $JumpSound
+onready var hit_sound = $HitSound
 
-export var jump_speed = -1200
+export var jump_power = 1100
 export var gravity = 3000
 
 var die = false
@@ -37,7 +38,7 @@ func jump():
 	jump_sound.play()
 	current_style = Style.JUMP
 	animator.play("Jump")
-	velocity.y = jump_speed
+	velocity.y = jump_power * -1
 	
 func crawl():
 	if current_style == Style.CRAWL: return
@@ -50,12 +51,13 @@ func shoot():
 
 func game_over():
 	die = true
+	hit_sound.play()
 	current_style = Style.DIE
 	animator.stop()
 	emit_signal("game_over")
 	
 func hit(type):
-	if type == HitType.ROCK:
+	if type == HitType.ENEMY:
 		game_over()
 	elif type == HitType.APPLE:
 		emit_signal("hit_apple")

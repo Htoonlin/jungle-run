@@ -76,4 +76,4 @@ text = "RESTART"
 
 [node name="Tween" type="Tween" parent="."]
 
-[connection signal="pressed" from="GameOver/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="button_up" from="GameOver/Restart" to="." method="_on_Restart_button_up"]

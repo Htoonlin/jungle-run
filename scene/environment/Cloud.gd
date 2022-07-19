@@ -2,7 +2,7 @@ extends Area2D
 
 onready var sprite = $Sprite
 
-var speed = 10
+var speed = 50
 var screen_size
 
 func _ready():
@@ -11,7 +11,7 @@ func _ready():
 
 func restart():
 	sprite.frame = randi() % sprite.hframes
-	global_position.x = randi() % 500 + screen_size.x
+	global_position.x = randi() % 200 + screen_size.x
 	
 func _physics_process(delta):
 	position.x -= speed * delta

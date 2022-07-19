@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pieapple.png-b2e052ed25cbbf67447dd6ef103c08e7.stex"
+path="res://.import/ground_enemies.png-53f0b43679cf305773e2c99ed5075e3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/pieapple.png"
-dest_files=[ "res://.import/pieapple.png-b2e052ed25cbbf67447dd6ef103c08e7.stex" ]
+source_file="res://asset/sprite/ground_enemies.png"
+dest_files=[ "res://.import/ground_enemies.png-53f0b43679cf305773e2c99ed5075e3c.stex" ]
 
 [params]
 

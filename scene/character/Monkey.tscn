@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scene/character/Monkey.gd" type="Script" id=1]
+[ext_resource path="res://asset/sprite/monkey.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Monkey" type="KinematicBody2D" groups=["enemies"]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 9, 30, 3, 30, 3, 18, 0, 15, -18, 15, -21, 18, -21, 30, -27, 30, -27, 16, -18, 9, -18, -29, 3, -29, 3, 9, 9, 15 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="DangerArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DangerArea"]
+polygon = PoolVector2Array( 9, 30, 3, 30, 3, 18, 0, 15, -18, 15, -21, 18, -21, 30, -27, 30, -27, 16, -18, 9, -18, -29, 3, -29, 3, 9, 9, 15 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="DangerArea" to="." method="_on_DangerArea_body_entered"]

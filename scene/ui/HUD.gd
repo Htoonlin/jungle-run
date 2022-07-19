@@ -10,4 +10,4 @@ func set_timer(seconds):
 	timer.text = "%02d:%02d" % [minute, seconds]
 	
 func set_fruit(count):
-	fruit.text = "X %04d" % count
+	fruit.text = "x %02d" % count
