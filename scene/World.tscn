@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scene/environment/Ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/World.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://asset/audio/background.mp3" type="AudioStream" id=9]
 [ext_resource path="res://scene/environment/GroundEnemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scene/character/Monkey.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scene/character/Bird.tscn" type="PackedScene" id=12]
 
 [node name="World" type="Node"]
 script = ExtResource( 2 )
@@ -28,12 +29,17 @@ collision_mask = 0
 position = Vector2( 0, 592 )
 
 [node name="FruitSpawner" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1340, 350 )
+position = Vector2( 1340, 380 )
 EnemyObject = ExtResource( 6 )
 
 [node name="MonkeySpawner" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1400, 562 )
 EnemyObject = ExtResource( 11 )
+second = 1.5
+
+[node name="BirdSpawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1350, 500 )
+EnemyObject = ExtResource( 12 )
 second = 1.5
 
 [node name="GroundEnemySpawner" parent="." instance=ExtResource( 5 )]

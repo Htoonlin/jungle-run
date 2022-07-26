@@ -51,6 +51,7 @@ tracks/0/keys = {
 }
 
 [node name="Monkey" type="KinematicBody2D" groups=["enemies"]]
+position = Vector2( 1, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -68,6 +69,8 @@ anims/Jump = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -3.53125, 1.0286 )
+scale = Vector2( 0.885417, 0.942796 )
 polygon = PoolVector2Array( 9, 30, 3, 30, 3, 18, 0, 15, -18, 15, -21, 18, -21, 30, -27, 30, -27, 16, -18, 9, -18, -29, 3, -29, 3, 9, 9, 15 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -77,7 +80,8 @@ autostart = true
 [node name="DangerArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DangerArea"]
-polygon = PoolVector2Array( 9, 30, 3, 30, 3, 18, 0, 15, -18, 15, -21, 18, -21, 30, -27, 30, -27, 16, -18, 9, -18, -29, 3, -29, 3, 9, 9, 15 )
+position = Vector2( -3, 0 )
+polygon = PoolVector2Array( 9, 30, 3, 30, 3, 18, 0, 15, -18, 15, -21, 18, -21, 30, -27, 30, -27, 16, -18, 9, -18, -29, 3, -29, 2.99999, 0.408649, 3, 9, 9, 15 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="DangerArea" to="." method="_on_DangerArea_body_entered"]

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var jump_power = 1200
+export var jump_power = 1500
 export var gravity = 3000
 
 onready var animator = $AnimationPlayer

@@ -13,8 +13,9 @@ onready var animator = $AnimationPlayer
 onready var sprite = $Sprite
 onready var jump_sound = $JumpSound
 onready var hit_sound = $HitSound
+onready var collision_shape = $CollisionShape2D
 
-export var jump_power = 1100
+export var jump_power = 1000
 export var gravity = 3000
 
 var die = false
@@ -28,6 +29,7 @@ func idle():
 
 func run():
 	if current_style == Style.RUN: return
+	collision_shape.rotation = 0.0
 	current_style = Style.RUN
 	animator.play("Run")
 	velocity = Vector2.ZERO
@@ -35,6 +37,7 @@ func run():
 func jump():
 	if current_style == Style.JUMP: return
 	print("Jump")
+	collision_shape.rotation = 0.0
 	jump_sound.play()
 	current_style = Style.JUMP
 	animator.play("Jump")
@@ -43,6 +46,7 @@ func jump():
 func crawl():
 	if current_style == Style.CRAWL: return
 	print("Crawl")
+	collision_shape.rotation = 90.0
 	current_style = Style.CRAWL
 	animator.play("Crawl")
 	
@@ -107,7 +111,7 @@ func _physics_process(delta):
 	
 	if is_on_floor() and !die:
 		if current_style == Style.CRAWL:
-			print("Crawling...")
+			crawl()
 		else:
 			run()
 	
