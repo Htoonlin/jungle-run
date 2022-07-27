@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "Ground",
 "language": "GDScript",
 "path": "res://scene/environment/Ground.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://scene/character/Player.gd"
 } ]
 _global_script_class_icons={
-"Ground": "",
-"Player": ""
+"Ground": ""
 }
 
 [application]

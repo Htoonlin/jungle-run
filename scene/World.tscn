@@ -64,7 +64,5 @@ position = Vector2( 1000, 180 )
 position = Vector2( 640, 360 )
 stream = ExtResource( 9 )
 
-[connection signal="game_over" from="Player" to="." method="_on_Player_game_over"]
-[connection signal="hit_apple" from="Player" to="." method="_on_Player_hit_apple"]
 [connection signal="start" from="Menu" to="." method="_on_Menu_start"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
