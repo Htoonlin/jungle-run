@@ -13,7 +13,7 @@ onready var hud = $HUD
 onready var background_music = $Music
 
 const FRUIT_START = 15
-const RANDOM_ENEMIES_START = 20
+const RANDOM_ENEMIES_START = 10
 const CHANGE_RANDOME_ENEMIES = 6
 
 var play_seconds = 0
